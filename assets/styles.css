@@ -1,0 +1,213 @@
+/*
+ * -------------------------------------------
+ * Estilos COMPLETOS Cyberpunk / Terminal (CONSOLIDADO)
+ * -------------------------------------------
+ */
+
+:root {
+    /* Paleta de Colores (Dark Mode + Neón) */
+    --color-fondo-oscuro: #1a1a2e;       /* Fondo muy oscuro, casi negro-azulado */
+    --color-neón: #00ffc8;              /* Verde brillante / Cian para acentos (el color del "neón") */
+    --color-texto-principal: #e9e9f2;    /* Blanco roto para legibilidad */
+    --color-borde: #8a2be2;              /* Púrpura brillante para bordes/separadores */
+    --color-secundario: #2c2c44;         /* Gris oscuro/morado para cajas de sección */
+
+    /* Fuentes (Monoespaciada para estilo de Terminal) */
+    --fuente-terminal: 'Consolas', 'Monaco', monospace;
+}
+
+/* ------------------------------------------- */
+/* Reseteo y Estilos Base */
+/* ------------------------------------------- */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fuente-terminal);
+    line-height: 1.6;
+    color: var(--color-texto-principal);
+    background-color: var(--color-fondo-oscuro);
+    /* Aplicar un pequeño 'efecto de brillo' general */
+    text-shadow: 0 0 3px rgba(0, 255, 200, 0.3);
+    padding-top: 60px; /* Espacio para el header fijo */
+}
+
+/* Título principal (H1) */
+h1 {
+    font-size: 3rem;
+    color: var(--color-neón);
+    text-align: center;
+    margin: 2rem auto 3rem auto;
+    padding: 0.5rem 2rem;
+    border: 3px double var(--color-borde);
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.8);
+    display: table; /* Para que el borde se ajuste al contenido */
+    animation: flicker-strong 2s infinite alternate;
+}
+
+/* Títulos de sección (H2) */
+h2 {
+    font-family: var(--fuente-terminal);
+    font-size: 1.8rem;
+    color: var(--color-neón);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-neón);
+    display: inline-block;
+}
+
+/* ------------------------------------------- */
+/* Enlaces y Navegación */
+/* ------------------------------------------- */
+
+a {
+    text-decoration: none;
+    color: var(--color-neón);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-texto-principal);
+    text-shadow: 0 0 10px var(--color-neón);
+}
+
+header {
+    background-color: rgba(26, 26, 46, 0.95);
+    border-bottom: 1px solid var(--color-borde);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: var(--color-texto-principal);
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ------------------------------------------- */
+/* Estilos de Contenido (Secciones: .presentacion y .formacion-academica) */
+/* ------------------------------------------- */
+
+.presentacion, .formacion-academica {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: var(--color-secundario);
+    border: 2px solid var(--color-borde);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5); /* Borde con brillo */
+    border-radius: 5px;
+}
+
+/* Estilo para el párrafo de la presentación */
+.presentacion p {
+    font-size: 0.95rem;
+    text-align: justify;
+    animation: flicker-sutil 3s infinite alternate;
+}
+
+/* Estilo específico para la lista de Formación Académica */
+.formacion-academica ol {
+    list-style-type: none; /* Quitamos los números por defecto */
+    padding-left: 0;
+}
+
+.formacion-academica li {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--color-neón);
+    font-size: 1.1rem;
+    color: var(--color-texto-principal);
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Simular el número de lista con el estilo de terminal */
+.formacion-academica li:before {
+    content: '>>';
+    color: var(--color-neón);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    text-shadow: 0 0 5px var(--color-neón);
+}
+
+.formacion-academica li:last-child {
+    border-bottom: none;
+}
+
+/* ------------------------------------------- */
+/* Animaciones y Media Queries */
+/* ------------------------------------------- */
+
+/* Animación para el efecto "flicker" sutil */
+@keyframes flicker-sutil {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 4px rgba(0, 255, 200, 0.3);
+    }
+    50% {
+        opacity: 0.95;
+        text-shadow: none;
+    }
+}
+
+/* Animación para el efecto "flicker" fuerte (para H1) */
+@keyframes flicker-strong {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 5px var(--color-neón) inset;
+    }
+    20%, 24%, 55% {
+        opacity: 0.8;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin: 1.5rem auto 2rem auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem;
+    }
+
+    .presentacion, .formacion-academica {
+        margin: 1.5rem 1rem;
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
